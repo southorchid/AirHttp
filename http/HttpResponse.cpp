@@ -23,11 +23,11 @@ void HttpResponse::text(const std::string &text) { text_ = text; }
 
 std::string HttpResponse::text() const { return text_; }
 
-void HttpResponse::headers(const std::string &key, const std::string &value) {
+void HttpResponse::header(const std::string &key, const std::string &value) {
   headers_[key] = value;
 }
 
-std::string HttpResponse::headers(const std::string &key) const {
+std::string HttpResponse::header(const std::string &key) const {
   auto it = headers_.find(key);
   if (it != headers_.end()) {
     return it->second;

@@ -35,6 +35,10 @@ class HttpRequest {
   void headers(const std::string &key, const std::string &value);
   std::string headers(const std::string &key) const;
 
+  // 设置/获取cookie
+  void cookie(const std::string &cookies);
+  std::string cookie() const;
+
   // 设置/获取请求体
   void body(const std::string &content);
   std::string body() const;

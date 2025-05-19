@@ -9,7 +9,7 @@
 #include "HttpResponse.h"
 #include "Router.h"
 
-class HttpServer {
+class HttpServer : private muduo::noncopyable {
  public:
   using Function = std::function<void(const HttpRequest &, HttpResponse &)>;
 

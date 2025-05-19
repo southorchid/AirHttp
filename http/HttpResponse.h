@@ -22,7 +22,7 @@ class HttpResponse {
     GATEWAY_TIMEOUT = 504,
   };
 
-  HttpResponse(bool close);
+  HttpResponse(bool close = true);
 
   // 设置/获取http版本
   void version(const std::string &version);
@@ -37,8 +37,8 @@ class HttpResponse {
   std::string text() const;
 
   // 设置/获取响应头
-  void headers(const std::string &key, const std::string &value);
-  std::string headers(const std::string &key) const;
+  void header(const std::string &key, const std::string &value);
+  std::string header(const std::string &key) const;
 
   // 设置/获取响应体
   void body(const std::string &body);

@@ -64,6 +64,18 @@ std::string HttpRequest::headers(const std::string &key) const {
   return "";
 }
 
+void HttpRequest::cookie(const std::string &cookie) {
+  headers_["Cookie"] = cookie;
+}
+
+std::string HttpRequest::cookie() const {
+  auto it = headers_.find("Cookie");
+  if (it != headers_.end()) {
+    return it->second;
+  }
+  return std::string();
+}
+
 void HttpRequest::body(const std::string &content) { content_ = content; }
 
 std::string HttpRequest::body() const { return content_; }
