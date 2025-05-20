@@ -40,6 +40,14 @@ class HttpResponse {
   void header(const std::string &key, const std::string &value);
   std::string header(const std::string &key) const;
 
+  // 设置/获取响应体类型
+  void content_type(const std::string &content_type);
+  std::string content_type() const;
+
+  // 设置/获取内容长度
+  void content_length(uint16_t content_length);
+  uint16_t content_length() const;
+
   // 设置/获取响应体
   void body(const std::string &body);
   std::string body() const;

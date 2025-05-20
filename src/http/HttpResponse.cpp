@@ -35,6 +35,21 @@ std::string HttpResponse::header(const std::string &key) const {
   return "";
 }
 
+void HttpResponse::content_type(const std::string &content_type) {
+  header("Content-Type", content_type);
+}
+
+std::string HttpResponse::content_type() const {
+  return header("Content-Type");
+}
+
+void HttpResponse::content_length(uint16_t content_length) {
+  header("Content-Length", std::to_string(content_length));
+}
+uint16_t HttpResponse::content_length() const {
+  return std::stoi(header("Content-Length"));
+}
+
 void HttpResponse::body(const std::string &body) { body_ = body; }
 
 std::string HttpResponse::body() const { return body_; }

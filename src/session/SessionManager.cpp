@@ -72,5 +72,5 @@ std::string SessionManager::get_session_id_from_cookie(
 void SessionManager::set_session_cookie(HttpResponse& response,
                                         const std::string& session_id) {
   std::string cookie = "session_id=" + session_id + "; Path=/; HttpOnly";
-  response.headers("Set-Cookie", cookie);  // 设置cookie到响应头
+  response.header("Set-Cookie", cookie);  // 设置cookie到响应头
 }

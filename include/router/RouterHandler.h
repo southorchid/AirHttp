@@ -5,5 +5,5 @@
 
 class RouterHandler {
  public:
-  virtual void hanle(const HttpRequest& request, HttpResponse& response) = 0;
+  virtual void handle(const HttpRequest& request, HttpResponse& response) = 0;
 };

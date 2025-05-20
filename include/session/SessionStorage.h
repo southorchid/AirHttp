@@ -6,6 +6,7 @@
 
 #include "Session.h"
 
+class Session;
 class SessionStorage {
  public:
   virtual void save(std::shared_ptr<Session> session) = 0;

@@ -31,7 +31,7 @@ bool Router::route(const HttpRequest& request, HttpResponse& response) {
   if (handler_method_it != handlers_.end()) {
     auto handler_path_it = handler_method_it->second.find(request.path());
     if (handler_path_it != handler_method_it->second.end()) {
-      handler_path_it->second->hanle(request, response);
+      handler_path_it->second->handle(request, response);
       return true;
     }
   }
@@ -52,7 +52,7 @@ bool Router::route(const HttpRequest& request, HttpResponse& response) {
         std::regex_match(path_str, match, path_regex)) {
       HttpRequest new_request(request);
       extract_path_parameters(match, new_request);
-      handler->hanle(new_request, response);
+      handler->handle(new_request, response);
       return true;
     }
   }

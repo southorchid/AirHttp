@@ -7,6 +7,8 @@
 #include "Session.h"
 #include "SessionStorage.h"
 
+class Session;
+class SessionStorage;
 class SessionManager {
  public:
   explicit SessionManager(std::unique_ptr<SessionStorage> storage);
