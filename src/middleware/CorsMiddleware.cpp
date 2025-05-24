@@ -40,7 +40,7 @@ bool CorsMiddleware::is_origin_allowed(const std::string& origin) const {
 void CorsMiddleware::handle_preflight_request(const HttpRequest& request,
                                               HttpResponse& response) {
   // 获取请求的源
-  const std::string& origin = request.headers("Origin");
+  const std::string& origin = request.header("Origin");
   if (!is_origin_allowed(origin)) {
     // 如果请求的源不被允许访问，返回403 Forbidden
     LOG_WARN << "Origin not allowed: " << origin;

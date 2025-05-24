@@ -26,13 +26,13 @@ bool HttpContext::parse_request(muduo::net::Buffer* buf,
       if (crlf) {
         const char* colon = std::find(buf->peek(), crlf, ':');  // 查找冒号
         if (colon < crlf) {
-          request_.headers(trim(std::string(buf->peek(), colon)),
-                           trim(std::string(colon + 1, crlf)));
+          request_.header(trim(std::string(buf->peek(), colon)),
+                          trim(std::string(colon + 1, crlf)));
         } else if (colon == crlf) {  // 解析到空行，表示请求头结束
           if (request_.method() == HttpRequest::POST ||
               request_.method() == HttpRequest::PUT) {
             // 只有在POST和PUT请求中才有Content-Length
-            std::string content_length = request_.headers("Content-Length");
+            std::string content_length = request_.header("Content-Length");
             if (!content_length.empty()) {
               request_.content_length(std::stoi(content_length));
               if (request_.content_length() > 0) {

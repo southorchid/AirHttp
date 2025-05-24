@@ -32,8 +32,8 @@ class HttpRequest {
   std::string query_parameters(const std::string &key) const;
 
   // 设置/获取请求头
-  void headers(const std::string &key, const std::string &value);
-  std::string headers(const std::string &key) const;
+  void header(const std::string &key, const std::string &value);
+  std::string header(const std::string &key) const;
 
   // 设置/获取cookie
   void cookie(const std::string &cookies);

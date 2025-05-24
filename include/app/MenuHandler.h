@@ -1,15 +1,14 @@
 #pragma once
 
-#include <memory>
+#include <nlohmann/json.hpp>
 
 #include "FileManager.h"
-#include "RouterHandler.h"
 #include "WebServer.h"
 
-class WebServer;
-class EntryHandler : public RouterHandler {
+class MenuHandler : public RouterHandler {
  public:
-  explicit EntryHandler(std::shared_ptr<WebServer> server);
+  using json = nlohmann::json;
+  explicit MenuHandler(std::shared_ptr<WebServer> server);
 
   void handle(const HttpRequest& request, HttpResponse& response) override;
 

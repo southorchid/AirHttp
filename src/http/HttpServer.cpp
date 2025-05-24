@@ -152,7 +152,7 @@ void HttpServer::onMessage(const muduo::net::TcpConnectionPtr& conn,
 
 void HttpServer::onRequest(const muduo::net::TcpConnectionPtr& conn,
                            const HttpRequest& request) {
-  const std::string& connection = request.headers("Connection");
+  const std::string& connection = request.header("Connection");
   bool close = (connection == "close" || (request.version() == "HTTP/1.0" &&
                                           connection != "Keep-Alive"));
   HttpResponse response(close);
@@ -176,6 +176,7 @@ void HttpServer::handle_request(const HttpRequest& request,
     if (!router_.route(mutable_request, response)) {
       LOG_INFO << "No route found for " << request.method() << " "
                << request.path();
+      response.version(request.version());
       response.status_code(HttpResponse::NOT_FOUND);
       response.text("Not Found");
       response.close_connection(true);
@@ -183,6 +184,7 @@ void HttpServer::handle_request(const HttpRequest& request,
 
     middleware_chain_.after(response);
   } catch (const std::exception& e) {
+    response.version(request.version());
     response.status_code(HttpResponse::INTERNAL_SERVER_ERROR);
     response.text("Internal Server Error");
     response.close_connection(true);

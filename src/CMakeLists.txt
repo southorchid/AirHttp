@@ -2,7 +2,7 @@ file(GLOB_RECURSE SOURCES
     ${PROJECT_SOURCE_DIR}/src/*.cpp
 )
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 add_executable(test ${SOURCES})
 
@@ -18,6 +18,7 @@ target_include_directories(test PUBLIC
   ${PROJECT_SOURCE_DIR}/include/session
   ${PROJECT_SOURCE_DIR}/include/ssl
   ${PROJECT_SOURCE_DIR}/include/app
+  ${PROJECT_SOURCE_DIR}/include/file
   ${MYSQL_CONNECTOR_CPP_INCLUDE_DIR}
 )
 

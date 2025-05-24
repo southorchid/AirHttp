@@ -8,10 +8,9 @@ int main() {
 
   muduo::Logger::setLogLevel(muduo::Logger::DEBUG);
 
-  WebServer server(port, serverName);
+  auto server = std::make_shared<WebServer>(port, serverName);
+  server->setThreadNum(4);
 
-  server.setThreadNum(4);
-
-  server.start();
+  server->start();
   return 0;
 }

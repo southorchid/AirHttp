@@ -52,11 +52,11 @@ std::string HttpRequest::query_parameters(const std::string &key) const {
   return "";
 }
 
-void HttpRequest::headers(const std::string &key, const std::string &value) {
+void HttpRequest::header(const std::string &key, const std::string &value) {
   headers_[key] = value;
 }
 
-std::string HttpRequest::headers(const std::string &key) const {
+std::string HttpRequest::header(const std::string &key) const {
   auto it = headers_.find(key);
   if (it != headers_.end()) {
     return it->second;
